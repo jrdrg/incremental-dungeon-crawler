@@ -1,0 +1,82 @@
+<div id="main">
+
+    <div class="col-left">
+        <div id="actions">
+            <span class="list-header">actions</span>
+            <ul>
+                <li>
+                    <timer-bar label="Explore" on-click="vm.exploreStart()" on-completed="vm.explore()"
+                               speed=".25"></timer-bar>
+                </li>
+                <li>
+                    <timer-bar label="Search" on-completed="vm.search()" speed="2.5"></timer-bar>
+                </li>
+            </ul>
+        </div>
+
+        <div id="travel">
+            <span class="list-header">fast travel</span>
+            <ul>
+                <li ng-repeat="location in vm.locations | discoveredLocation">
+                    {{location.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="location">
+        <div>
+            {{vm.location().name}}
+
+            <span class="explored-percentage">
+                {{vm.location().map.exploredPct | percentage:2}} discovered
+            </span>
+        </div>
+    </div>
+
+
+    <div id="status">
+        <div class="column-container">
+            <div class="resources">
+                <ul>
+                    <li ng-repeat="resource in vm.resources()">
+                        <span class="resource-name">
+                            {{resource.name}}:
+                        </span>
+                        {{resource.current}}
+                        <span ng-if="resource.max">
+                            / {{resource.max}}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="status">
+                <span ng-repeat="(idx,message) in vm.messages" class="message">
+                    <span>{{message.text}}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-view" ui-view>
+    </div>
+
+    <div id="party">
+        <ul>
+            <li>
+                <span class="id header">#</span>
+                <span class="name header">Name</span>
+                <span class="hp header">HP</span>
+            </li>
+            <li ng-repeat="character in vm.party">
+                <span class="id">{{character.id}}</span>
+                <a ng-click="vm.characterInfo(character)">
+                    <span class="name">{{character.name}}</span>
+                </a>
+                <span class="hp">{{character.hp.current}} / {{character.hp.max}}</span>
+            </li>
+        </ul>
+    </div>
+
+</div>

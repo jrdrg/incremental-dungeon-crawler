@@ -1,0 +1,43 @@
+@import "_variables";
+
+@progress-color: #0cf;
+
+div.timer-bar-button {
+  margin: 5px;
+  padding: 5px;
+  //  background-color: darken(@font-color, 35%);
+}
+
+a.timer-bar-text {
+  //  display: inline-block;
+  display: block;
+  margin-bottom: 5px;
+
+  //  width: 70px;
+
+  &:hover {
+    color: lighten(@font-color, 40%);
+  }
+}
+
+.timer-bar {
+  .border(1px);
+  //  width: 50px;
+  width: 100%;
+  display: inline-block;
+  height: 12px;
+
+  .timer-bar-progress {
+    transition: 0.4s all;
+    background-color: darken(@progress-color, 15%);
+    height: 100%;
+  }
+
+  .timer-bar-progress.timer-bar-complete {
+    //    transition: 0.3s all;
+    transition: 0s all;
+    background-color: darken(@progress-color, 10%);
+    opacity: 0;
+  }
+}
+
