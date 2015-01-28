@@ -1,5 +1,7 @@
 @import "_variables";
 
+@progress-color: #0ad;
+
 div.actions {
 
   padding: 5px;
@@ -9,11 +11,41 @@ div.actions {
 .action-button {
   .border(1px);
   display: inline-block;
-  padding: 5px;
   margin: 10px;
   background-color: darken(@font-color, 40%);
+  position: relative;
 
   &:hover {
-    background-color: darken(@font-color, 30%);
+    color: @font-color;
+    background-color: darken(@font-color, 35%);
+  }
+}
+
+.action-bar {
+  width: 100%;
+  display: block;
+  height: @font-size * 2;
+
+  .action-bar-text {
+    padding-left: 15px;
+    padding-right:15px;
+    top: -(@font-size/1) - 5px;
+    position: relative;
+  }
+
+  .timer-bar-progress {
+    transition: 0s all;
+    background-color: darken(@progress-color, 20%);
+    height: 100%;
+  }
+
+  .timer-bar-progress.timer-bar-running {
+    transition: 0.4s all;
+  }
+
+  .timer-bar-progress.timer-bar-complete {
+    transition: 0.3s all;
+    background-color: lighten(@progress-color, 10%);
+    opacity: 0;
   }
 }

@@ -1,24 +1,11 @@
 <div id="main">
 
     <div class="col-left">
-        <div id="actions">
-            <span class="list-header">actions</span>
-            <ul>
-                <li>
-                    <timer-bar label="Explore" on-click="vm.exploreStart()" on-completed="vm.explore()"
-                               speed=".25"></timer-bar>
-                </li>
-                <li>
-                    <timer-bar label="Search" on-completed="vm.search()" speed="2.5"></timer-bar>
-                </li>
-            </ul>
-        </div>
-
         <div id="travel">
-            <span class="list-header">fast travel</span>
+            <span class="list-header">Fast Travel</span>
             <ul>
                 <li ng-repeat="location in vm.locations | discoveredLocation">
-                    {{location.name}}
+                    <a ng-click="vm.changeLocation(location.id, 'Traveling to ' + location.name + '...')()">{{location.name}}</a>
                 </li>
             </ul>
         </div>

@@ -16,6 +16,7 @@
         this.actionSpeed = game.actionSpeed;
         this.actions = actions.actionDefinitions;
         this.characterInfo = characterInfo;
+        this.changeLocation = locations.changeLocation;
         this.explore = explore;
         this.exploreStart = exploreStart;
         this.location = game.location;

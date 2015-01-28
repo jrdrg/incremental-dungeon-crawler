@@ -9,7 +9,7 @@
      * @ngInclude
      * @constructor
      */
-    function mapFactory(utils, actions, party, statusMessages, upgrades, resources, Battle) {
+    function mapFactory(utils, party, statusMessages, upgrades, resources, Battle) {
 
         var getLostChance = 0.2;    // todo: change this?
         var roomXpBase = 1;

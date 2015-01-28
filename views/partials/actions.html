@@ -1,6 +1,6 @@
 <div class="actions">
 
-    <a ng-repeat="action in vm.location().actions" class="action-button" ng-click="action.action()">
+    <a ng-repeat="action in vm.location().actions" class="action-button" ng-click="action.action()" action-button action="action">
         {{action.text}}
     </a>
 </div>

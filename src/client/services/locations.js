@@ -11,13 +11,15 @@
         };
     }
 
+
     /**
      * @ngInject
      * @constructor
      */
-    function Locations($state, $q, actions, statusMessages, Map) {
+    function Locations($state, $q, statusMessages, actions, Map) {
 
         var self = this,
+            actionDefs = actions.actionDefinitions,
             loc;
 
         this.changeLocation = changeLocation;
@@ -65,13 +67,7 @@
                         text: 'Return to town',
                         action: changeLocation('town', 'You return to the town.')
                     },
-                    {
-                        text: 'Explore',
-                        action: function () {
-                            // explore
-                            self.explore();
-                        }
-                    },
+                    actionDefs.explore,
                     {
                         text: 'Gather herbs',
                         action: function () {
@@ -101,6 +97,7 @@
         function changeLocation(newLocation, message) {
             return function () {
                 loc = _.findWhere(self.locations, {id: newLocation});
+                loc.discovered = true;
                 statusMessages.message(message);
             };
         }

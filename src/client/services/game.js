@@ -29,6 +29,7 @@
             explore: 1,
             gather: 1
         };
+        this.locations = locations;
         this.location = currentLocation;
         this.resources = availableResources;
 
