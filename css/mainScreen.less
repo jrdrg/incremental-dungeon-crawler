@@ -1,23 +1,33 @@
 @import "_variables";
 
 @border-width: 3px;
+//@left-width: 180px;
+@left-width: 0px;
+@right-width: 180px;
+@container-height: 666px;
 
 header {
   div {
     height: 40px;
     text-align: center;
     font-size: @font-size * 1.5;
+    padding-top: @font-size/2;
   }
 }
 
 .col-left {
-  width: 180px;
+  width: @left-width;
   float: left;
 }
 
 .col-right {
-  width: 100px;
+  width: @right-width;
   float: right;
+}
+
+.col-center {
+  margin-left: @left-width + 20px;
+  margin-right: @right-width + 20px;
 }
 
 .explored-percentage {
@@ -28,20 +38,47 @@ header {
   margin-left: auto;
   margin-right: auto;
   width: 1200px;
+  height: 666px;
 }
 
 #travel {
   .border(@border-width);
   margin-bottom: 20px;
+  height: (@container-height / 2) - 10px;
+  overflow-y: auto;
 
-  li {
-    padding-left: 5px;
-    padding-bottom: 5px;
+  ul {
+    padding-left: 25px;
+
+    li {
+      list-style-type: square;
+      padding-top: 3px;
+      //    border-bottom: 1px solid darken(@border-color, 70%);
+    }
+
+    li:last-child {
+      border-bottom-width: 0;
+    }
   }
+}
 
-  a{
-    &:hover{
+#upgrades {
+  .border(@border-width);
+  margin-bottom: 20px;
+  height: (@container-height / 2) - 10px;
+  overflow-y: auto;
 
+  ul {
+    padding-left: 15px;
+
+    li {
+      //      list-style-type: square;
+      padding-top: 3px;
+      //    border-bottom: 1px solid darken(@border-color, 70%);
+    }
+
+    li:last-child {
+      border-bottom-width: 0;
     }
   }
 }
@@ -51,14 +88,13 @@ header {
 }
 
 #status {
-  width: 65%;
+  //  width: 65%;
   margin: auto;
   height: 200px;
 }
 
 #party {
   .border(@border-width);
-  width: 65%;
   margin: 20px auto auto;
   padding: 10px;
 
@@ -91,7 +127,6 @@ header {
 #location {
   .border(@border-width);
   background: darken(@font-color, 35%);
-  width: 65%;
   margin: auto auto 20px;
 
   > div {
@@ -101,7 +136,6 @@ header {
 
 #main-view {
   .border(@border-width);
-  width: 65%;
   height: 200px;
   margin: 20px auto auto;
 }

@@ -9,42 +9,66 @@
      * @ngInject
      * @constructor
      */
-    function Game($rootScope, eventLoop, party, actions, resources, locations, upgrades) {
+    function Game($rootScope, $state, eventLoop, utils, party, actions, resources, locations, upgrades) {
+
+        var self = this;
 
         eventLoop.onTick($rootScope, function (args) {
-            console.log("tick");
-
-            actions.processTick();
-            upgrades.processTick();
+            actions.processTick(self);
+            upgrades.processTick(self);
+            locations.processTick(self);
         });
 
 
         locations.changeLocation('town')();
-        locations.explore();
+        locations.current().map.exploredPct = 1;    // nothing to explore in the town for now
 
         /////////////////////////////////////////////////////////
 
-        this.party = party.characters;
-        this.actionSpeed = {
-            explore: 1,
-            gather: 1
-        };
-        this.locations = locations;
+        this.id = "Game";
+        this.explore = explore;
+        this.isInBattle = isInBattle;
         this.location = currentLocation;
+        this.party = party.characters;
         this.resources = availableResources;
+        this.updateResource = updateResource;
+        this.upgrades = upgrades.upgradeDefinitions;
 
 
         /////////////////////////////////////////////////////////
 
         function availableResources() {
-            var filtered = _.filter(resources, 'visible');
-            return filtered;
+            return _.filter(resources, 'visible');
         }
+
 
         function currentLocation() {
             return locations.current();
         }
 
+
+        function explore() {
+            locations.explore();
+        }
+
+
+        function isInBattle() {
+            return $state.current.name === 'main.battle';
+        }
+
+
+        function updateResource(resource, amount, max) {
+            var res = resources[resource];
+            if (!res) {
+                res = {name: resource, current: 0, max: max, visible: true};
+                resources[resource] = res;
+            }
+            if (res.max) {
+                res.current = utils.clamp(res.current + amount, 0, res.max);
+            } else {
+                res.current += amount;
+            }
+        }
     }
 
     angular.module('game')

@@ -24,9 +24,9 @@
             this.trapChance = Math.random();    // % of trap
             this.treasureChance = Math.random();
 
-            function explore() {
+            function explore(locations) {
                 if (Math.random() <= self.enemyChance) {
-                    randomBattle();
+                    randomBattle(locations);
 
                 } else if (Math.random() <= self.trapChance) {
                     trap();
@@ -38,14 +38,12 @@
                 self.explored = true;
             }
 
-            function randomBattle() {
+            function randomBattle(locations) {
                 statusMessages.message("Random battle!");
                 self.enemyChance *= 0.8; // reduce the chance each time we visit this room
 
-                var enemies = [{name: 'goblin', hp: 5, atk: 1, def: 1}];
-
-                var battle = new Battle(enemies);
-                battle.fight();
+                var battle = new Battle(locations, {});
+                battle.begin();
             }
 
             function foundTreasure() {
@@ -80,9 +78,9 @@
 
             ///////////////////////////////
 
-            function explore(totalFloors) {
+            function explore(totalFloors, locations) {
                 var room = self.rooms[self.currentRoom];
-                room.explore();
+                room.explore(locations);
 
                 var hasStairs = (self.currentRoom == self.rooms.length - 1) || Math.random() <= room.hasStairs;
 
@@ -136,9 +134,9 @@
                 self.currentFloor = newFloor || self.currentFloor;
             }
 
-            function explore() {
+            function explore(locations) {
                 var floor = utils.clamp(self.currentFloor, 0, self.floors.length);
-                self.floors[floor].explore(self.floors.length);
+                self.floors[floor].explore(self.floors.length, locations);
 
                 var explored = _.reduce(self.floors, function (pct, floor, idx) {
                     console.log("EXPLORED: " + floor);

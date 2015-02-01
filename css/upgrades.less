@@ -1,0 +1,34 @@
+@import "_variables";
+
+@noPurchaseColor: lighten(@background, 35%);
+@inactiveColor: @font-color - #095;
+@tooltipWidth: 300px;
+@tooltipMargin: 10px;
+
+.cannot-purchase {
+  color: @noPurchaseColor;
+}
+
+.inactive-upgrade {
+  color: @inactiveColor;
+}
+
+.tooltip {
+  .border(2px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: @tooltipWidth;
+  padding: @tooltipMargin;
+  background-color: lighten(@background, 15%);
+
+  ul.requires {
+    color: darken(@font-color, 10%);
+    margin-top: 10px;
+
+    li {
+      list-style-type: none;
+    }
+  }
+}

@@ -9,25 +9,22 @@
      * @ngInject
      * @constructor
      */
-    function MainController($scope, $state, game, actions, statusMessages, locations) {
+    function MainController($scope, $state, game, actions, statusMessages, locations, upgrades) {
 
         var self = this;
 
-        this.actionSpeed = game.actionSpeed;
         this.actions = actions.actionDefinitions;
+        this.buyUpgrade = buyUpgrade;
         this.characterInfo = characterInfo;
         this.changeLocation = locations.changeLocation;
-        this.explore = explore;
-        this.exploreStart = exploreStart;
-        this.location = game.location;
+        this.getAvailableActions = getAvailableActions;
+        this.getAvailableUpgrades = getAvailableUpgrades;
+        this.getLocation = getLocation;
+        this.getParty = getParty;
+        this.getUpgradeDescription = getUpgradeDescription;
         this.locations = locations.locations;
         this.messages = [];
-        this.party = game.party;
         this.resources = game.resources;
-        this.search = search;
-        this.text = 'test';
-
-        this.party[0].$save();
 
         ///////////////////////////////
 
@@ -38,23 +35,61 @@
             }
         });
 
-        function exploreStart(){
-            statusMessages.message('Exploring...');
+
+        function buyUpgrade(upgrade) {
+            upgrades.buyUpgrade(upgrade);
         }
 
-        function explore() {
-            statusMessages.message('You found some stuff.');
-        }
-
-        function search() {
-            console.log("search");
-        }
 
         function characterInfo(character) {
-            $state.go('main.characterStatus', {
-                character: character
+            if (!game.isInBattle()) {
+
+                $state.go('main.characterStatus', {
+                    character: character
+                });
+
+            } else {
+                statusMessages.message("In a battle!");
+            }
+        }
+
+
+        function getAvailableActions() {
+            return game.location().actions;
+        }
+
+
+        function getAvailableUpgrades() {
+            return _.sortBy(_.filter(upgrades.upgradeDefinitions, 'available'), function (u) {
+                return u.active ? 0 : 1;
             });
         }
+
+
+        function getLocation() {
+            return game.location();
+        }
+
+
+        function getParty() {
+            return game.party;
+        }
+
+
+        function getUpgradeDescription(upgrade) {
+            var text = "<div>" + upgrade.description + "</div><ul class='requires'>";
+
+            for (var require in upgrade.requires) {
+                if (upgrade.requires.hasOwnProperty(require)) {
+                    text += "<li>" + require + ": " + upgrade.requires[require] + "</li>";
+                }
+            }
+
+            text += "</ul>";
+            return text;
+        }
+
+
     }
 
     angular.module('game')

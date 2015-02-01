@@ -1,0 +1,28 @@
+@import "_variables";
+
+#battle {
+  height: 100%;
+  padding: 10px;
+
+  .battle-status {
+    overflow-y: auto;
+    margin-right: 100px;
+    height: 100%;
+  }
+
+  .battle-message {
+    padding-bottom: 2px;
+    transition: 0.6s all;
+    color: darken(@font-color, 20%);
+    &:first-child {
+      color: lighten(@font-color, 10%);
+    }
+  }
+
+  .enemies {
+    width: 100px;
+    float: right;
+    height: 100%;
+    overflow-y: auto;
+  }
+}

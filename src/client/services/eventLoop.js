@@ -27,7 +27,7 @@
         //////////////////////////////////////////////
 
         function onTick(scope, handler) {
-            scope.$on(TICK, function (e, args) {
+            return scope.$on(TICK, function (e, args) {
                 handler(args);
             });
         }

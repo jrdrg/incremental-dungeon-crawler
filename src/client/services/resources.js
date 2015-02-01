@@ -9,26 +9,26 @@
 
         return {
             xp: {
-                name: 'xp',
+                name: 'XP',
                 visible: true,
                 current: 0
             },
 
             food: {
-                name: 'food',
+                name: 'Food',
                 visible: true,
                 current: 0,
                 max: 1000
             },
 
             gold: {
-                name: 'gold',
+                name: 'Gold',
                 visible: true,
                 current: 0
             },
 
             iron: {
-                name: 'iron',
+                name: 'Iron',
                 current: 0,
                 max: 100
             }
@@ -38,5 +38,4 @@
     angular.module('game')
         .factory('resources', resources);
 
-})
-();
+})();

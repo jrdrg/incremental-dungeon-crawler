@@ -1,0 +1,15 @@
+<div id="battle">
+
+    <div class="enemies">
+        <div ng-repeat="enemy in vm.enemies">
+            {{enemy.name}}
+        </div>
+    </div>
+
+    <div class="battle-status">
+        <div ng-repeat="message in vm.messages" class="battle-message">
+            {{message.message}}
+        </div>
+    </div>
+
+</div>

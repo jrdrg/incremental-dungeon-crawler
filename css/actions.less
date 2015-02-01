@@ -1,6 +1,6 @@
 @import "_variables";
 
-@progress-color: #0ad;
+@progress-color: #097;
 
 div.actions {
 
@@ -12,12 +12,15 @@ div.actions {
   .border(1px);
   display: inline-block;
   margin: 10px;
-  background-color: darken(@font-color, 40%);
+  background-color: darken(@font-color, 50%);
   position: relative;
 
   &:hover {
-    color: @font-color;
-    background-color: darken(@font-color, 35%);
+    background-color: darken(@font-color, 40%);
+  }
+
+  &.automated {
+    border-color: #c942b5;
   }
 }
 
@@ -28,24 +31,26 @@ div.actions {
 
   .action-bar-text {
     padding-left: 15px;
-    padding-right:15px;
+    padding-right: 15px;
     top: -(@font-size/1) - 5px;
     position: relative;
   }
 
   .timer-bar-progress {
     transition: 0s all;
-    background-color: darken(@progress-color, 20%);
+    background-color: darken(@progress-color, 10%);
     height: 100%;
+    opacity: 0;
   }
 
   .timer-bar-progress.timer-bar-running {
     transition: 0.4s all;
+    opacity: 1;
   }
 
   .timer-bar-progress.timer-bar-complete {
-    transition: 0.3s all;
+    transition: 0.1s all;
     background-color: lighten(@progress-color, 10%);
-    opacity: 0;
+    //    opacity: 0;
   }
 }

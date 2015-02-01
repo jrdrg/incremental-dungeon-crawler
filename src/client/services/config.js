@@ -8,7 +8,9 @@
     function config() {
         return {
             ticksPerSecond: 5,
-            apiServer: 'http://localhost:13098/'
+            apiServer: 'http://localhost:13098/',
+
+            secondsToHealInTown: 3
         };
     }
 

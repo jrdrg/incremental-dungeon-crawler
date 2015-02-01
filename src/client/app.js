@@ -36,6 +36,16 @@
                 controller: 'CharacterStatusController',
                 controllerAs: 'vm'
             })
+
+            .state('main.battle', {
+                params: {
+                    battle: null,
+                    promise: null
+                },
+                templateUrl: '/partials/battle.html',
+                controller: 'BattleController',
+                controllerAs: 'vm'
+            })
         ;
     }
 
