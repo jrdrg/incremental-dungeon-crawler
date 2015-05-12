@@ -13,3 +13,4 @@ bower install
 node serverApp.js
 ```
 
+Go to localhost:13098
