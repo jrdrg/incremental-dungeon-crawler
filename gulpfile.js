@@ -1,16 +1,16 @@
-var gulp = require('gulp');
+var autoprefix = require('gulp-autoprefixer');
+var bower = require('main-bower-files');
 var concat = require('gulp-concat');
+var del = require('del');
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+var less = require('gulp-less');
+var ngAnnotate = require('gulp-ng-annotate');
+var nodemon = require('gulp-nodemon');
+var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
-var plumber = require('gulp-plumber');
-var less = require('gulp-less');
-var del = require('del');
-var ngAnnotate = require('gulp-ng-annotate');
-var jshint = require('gulp-jshint');
-var autoprefix = require('gulp-autoprefixer');
-var nodemon = require('gulp-nodemon');
-var sourcemaps = require('gulp-sourcemaps');
-var bower = require('main-bower-files');
 
 
 var outDir = './public/';

@@ -46,6 +46,23 @@
                 controller: 'BattleController',
                 controllerAs: 'vm'
             })
+
+            .state('town', {})
+
+            .state('town.inn', {})
+
+            .state('town.blacksmith', {})
+
+            .state('town.trainingHall', {})
+
+            .state('town.library', {})
+
+            .state('mapTest', {
+                url: '/maptest',
+                templateUrl: '/partials/mapTest.html',
+                controller: 'MapTestController',
+                controllerAs: 'vm'
+            })
         ;
     }
 

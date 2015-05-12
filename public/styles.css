@@ -109,6 +109,9 @@ a.timer-bar-text:hover {
   background-color: #33d6ff;
   opacity: 0;
 }
+canvas {
+  border: 1px solid white;
+}
 
 html {
   font-size: 14px;

@@ -22,42 +22,6 @@
 
         this.enemies = battle.enemies;
         this.messages = battle.messages;
-        //
-        //eventLoop.onTick($scope, function (args) {
-        //    tick++;
-        //
-        //    if (tick % 3 === 0) {
-        //        if (results === null) {
-        //            results = battle.processRound();
-        //        }
-        //        var res = results.shift();
-        //        self.messages.unshift(res);
-        //
-        //        if (res.xp && res.xp > 0) {
-        //            xp += res.xp;
-        //        }
-        //        if (results.length === 0 || res.victory) {
-        //            results = null;
-        //        }
-        //
-        //        if (res.victory) {
-        //            results = null;
-        //            promise.resolve({
-        //                xp: xp
-        //            });
-        //            statusMessages.message("You are victorious and gain " + xp + " xp.");
-        //            $state.go(prevState || 'main.actions');
-        //        } else if (res.defeat) {
-        //            results = null;
-        //            promise.resolve({
-        //                xp: 0
-        //            });
-        //            promise = null;
-        //            statusMessages.message("You have been defeated.");
-        //            $state.go(prevState || 'main.actions');
-        //        }
-        //    }
-        //});
 
     }
 
